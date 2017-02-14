@@ -69,16 +69,18 @@ public class Firm implements Report {
     public void sortByName() {
         int minIndex=0;
         Staff tmp;
-        for (int i = 0;i<staffs.length;i++) {
-            minIndex=i;
-            for (int j=1;j<staffs.length;j++) {
-                if(staffs[j].compareTo(staffs[minIndex])<0)
-                    minIndex=j;
+        for (int i =0;i<staffs.length;i++ ) {
+            minIndex = i;
+            for (int j = i;j<staffs.length;j++) {
+                if (staffs[j].compareTo(staffs[minIndex])<0) {
+                    minIndex = j;
+                }
             }
-            System.out.println("min Staff = " + staffs[minIndex]);
+            System.out.println("min Staff = "+staffs[minIndex]);
             tmp = staffs[i];
             staffs[i]=staffs[minIndex];
             staffs[minIndex]=tmp;
         }
+
     }
 }

@@ -9,7 +9,7 @@ package sit.int105.model;
  *
  * @author INT105
  */
-public abstract class Staff {
+public abstract class Staff implements Comparable<Staff> {
     private long staffId;
     private String name;
     private String surname;
