@@ -14,6 +14,17 @@ public abstract class Staff {
     private String name;
     private String surname;
     private static long seqNo=1000;
+
+    public int compareTo(Staff s) {
+        int nameResult = name.compareTo(s.name);
+        if(nameResult == 0) {
+            return surname.compareTo(s.surname);
+        }
+        else {
+            return nameResult;
+        }
+    }
+
     public Staff() {
         this("unknow", "unknow");
     }
@@ -23,7 +34,7 @@ public abstract class Staff {
         this.name = name;
         this.surname = surname;
     }
-    
+
     public static long getSeqNo() {
         return seqNo;
     }

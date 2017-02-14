@@ -9,7 +9,7 @@ package sit.int105.model;
  *
  * @author INT105
  */
-public class Volunteer extends Staff {
+public class Volunteer extends Staff { //implements Comparable <Volunteer> {
     private String staffId;
     private String EmergencyContactName;
 
@@ -17,6 +17,10 @@ public class Volunteer extends Staff {
     @Override
     public double pay(){
         return 0;
+    }
+
+    public int compareTo(Volunteer o) {
+        return staffId.compareTo(o.staffId);
     }
 
     public Volunteer() {
@@ -31,8 +35,9 @@ public class Volunteer extends Staff {
 
     @Override
     public String toString() {
-        return  "staffId=" + staffId + ", name= " + getName() + ", Emergency Contact Name=" + EmergencyContactName;
+        return  "staff ID = " + staffId + ", name = " + getName() + ", Emergency Contact Name=" + EmergencyContactName;
     }
+
 
 
 

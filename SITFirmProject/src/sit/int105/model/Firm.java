@@ -9,10 +9,10 @@ package sit.int105.model;
  *
  * @author INT105
  */
-public class Firm {
+public class Firm implements Report {
     private String firmName;
     private Staff[] staffs;
-
+    public String logo;
     public Firm() {
 
     }
@@ -40,7 +40,8 @@ public class Firm {
 
     @Override
     public String toString() {
-       String result=firmName+"\n";
+
+       String result = firmName + getHeader() + "\n";
        for(int i=0;i<staffs.length;i++){
            result+=staffs[i]+"\n";
        }
@@ -48,7 +49,36 @@ public class Firm {
     }
 
     public double payMonthlyAll(){
-        return 0;
+        double totalPay = 0;
+        for(int i=0;i<staffs.length;i++) {
+            totalPay+=staffs[i].pay();
+        }
+        return totalPay;
     }
 
+    @Override
+    public String getHeader(){
+        return logo;
+    }
+
+    @Override
+    public void setHeader(String header){
+        logo = header;
+    }
+
+    public void sortByName() {
+        int minIndex=0;
+        Staff tmp;
+        for (int i = 0;i<staffs.length;i++) {
+            minIndex=i;
+            for (int j=1;j<staffs.length;j++) {
+                if(staffs[j].compareTo(staffs[minIndex])<0)
+                    minIndex=j;
+            }
+            System.out.println("min Staff = " + staffs[minIndex]);
+            tmp = staffs[i];
+            staffs[i]=staffs[minIndex];
+            staffs[minIndex]=tmp;
+        }
+    }
 }
